@@ -90,6 +90,31 @@
             <a class="hover:text-gray-300" href="#">
                 Contact
             </a>
+            @if (Route::has('login'))
+            <nav class="-mx-3 flex flex-1 justify-end">
+                @auth
+                <a
+                    href="{{ url('/dashboard') }}"
+                    style="margin-right: 20px;"
+                    class="hover:text-gray-300">
+                    Dashboard
+                </a>
+
+                @else
+                <a href="{{ route('login') }}" style="margin-right: 20px;" class="hover:text-gray-300">
+                    Log in
+                </a>
+
+                @if (Route::has('register'))
+                <a
+                    href="{{ route('register') }}"
+                    class="hover:text-gray-300" href="#">
+                    Register
+                </a>
+                @endif
+                @endauth
+            </nav>
+            @endif
         </nav>
     </div>
     <!-- Hero Section -->
